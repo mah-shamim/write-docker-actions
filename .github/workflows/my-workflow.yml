@@ -1,16 +1,35 @@
-name: "Docker Actions"
+# name: Docker Actions
 
-on: [push]
+# on: [push]
+
+# jobs:
+#   action:
+
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - uses: actions/checkout@v1
+
+#     - name: hello-action
+#       uses: ./.github/actions/hello-world
+#       with:
+#         firstGreeting: "Learning Lab User"
+
+name: Docker Actions
+
+on:
+  pull_request:
+    types: [labeled]
 
 jobs:
   action:
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v1
 
-      - name: "hello-action"
+      - name: hello-action
         uses: ./.github/actions/hello-world
-        with:
-          firstGreeting: "Learning Github Lab User"
-          secondGreeting: "MD ARIFUL HAQUE Learning Lab User"
-          thirdGreeting: "SHAMIM Learning Lab User"
+
+      - name: meow
+        uses: ./.github/actions/cat-facts
